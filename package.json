@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/TheAntro/blog#readme",
   "dependencies": {
+    "@fontsource-variable/outfit": "^5.0.8",
     "astro": "^4.2.6"
   },
   "volta": {
