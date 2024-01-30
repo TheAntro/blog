@@ -5,6 +5,7 @@
   --secondary: #008170;
   --white: #ffffff;
   --max-width: 44rem;
+  --state-transition: 50ms ease-in;
 }
 
 *,
@@ -17,4 +18,5 @@ body {
   background-color: var(--bg-color);
   color: var(--white);
   font-family: "Outfit Variable", sans-serif;
+  margin: 0;
 }
