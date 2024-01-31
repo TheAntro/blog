@@ -1,0 +1,31 @@
+---
+import { storyblokEditable, type SbBlokData, type ISbRichtext } from '@storyblok/astro'
+import RichTextRenderer from '@storyblok/astro/RichTextRenderer.astro';
+interface Article {
+  title: string;
+  date: string;
+  teaser: SbBlokData
+  content: ISbRichtext
+}
+const { blok }  = Astro.props as { blok: SbBlokData & Article }
+---
+
+<article {...storyblokEditable(blok)}>
+  <div>
+    <h1>
+      {blok.title}
+    </h1>
+    <p class="publish-time">{blok.date}</p>
+    <RichTextRenderer richTextData={blok.content}/>
+  </div>
+</article>
+<style>
+  h1 {
+    margin-bottom: 0;
+  }
+  .publish-time {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    color: rgba(var(--white-base), 0.5);
+  }
+</style>
