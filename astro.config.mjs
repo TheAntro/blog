@@ -15,6 +15,7 @@ export default defineConfig({
       components: {
         page: "storyblok/Page",
         teaser: "storyblok/Teaser",
+        article: "storyblok/Article",
       },
     }),
   ],

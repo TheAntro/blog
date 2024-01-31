@@ -1,10 +1,14 @@
 ---
 import { storyblokEditable, type SbBlokData, renderRichText, type ISbRichtext } from '@storyblok/astro'
+interface Teaser {
+  headline: string;
+  insert: ISbRichtext;
+}
 interface Props {
-  blok: SbBlokData;
+  blok: SbBlokData & Teaser;
 }
 const { blok } = Astro.props
-const insert = renderRichText(blok.insert as ISbRichtext);
+const insert = renderRichText(blok.insert);
 ---
   
 <div {...storyblokEditable(blok)}>
