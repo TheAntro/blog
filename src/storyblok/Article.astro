@@ -15,7 +15,7 @@ const { blok }  = Astro.props as { blok: SbBlokData & Article }
     <h1>
       {blok.title}
     </h1>
-    <p class="publish-time">{blok.date}</p>
+    <span class="publish-time">{blok.date}</span>
     <RichTextRenderer richTextData={blok.content}/>
   </div>
 </article>
@@ -26,6 +26,6 @@ const { blok }  = Astro.props as { blok: SbBlokData & Article }
   .publish-time {
     font-size: 0.75rem;
     margin-top: 0.25rem;
-    color: rgba(var(--white-base), 0.5);
+    color: rgba(var(--white), 0.5);
   }
 </style>

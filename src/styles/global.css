@@ -27,3 +27,7 @@ a {
     color: rgb(var(--primary));
   }
 }
+
+p {
+  line-height: 150%;
+}
