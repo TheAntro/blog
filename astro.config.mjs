@@ -16,6 +16,7 @@ export default defineConfig({
         page: "storyblok/Page",
         teaser: "storyblok/Teaser",
         article: "storyblok/Article",
+        'all-articles': "storyblok/AllArticles",
       },
     }),
   ],

@@ -1,0 +1,40 @@
+---
+import { storyblokEditable, useStoryblokApi } from '@storyblok/astro'
+ 
+const { blok } = Astro.props
+ 
+const storyblokApi = useStoryblokApi()
+const { data } = await storyblokApi.get(`cdn/stories`, {
+  version: import.meta.env.DEV ? "draft" : "published",
+  starts_with: 'articles/',
+  is_startpage: false,
+})
+ 
+const articles = data.stories
+---
+ 
+<section {...storyblokEditable(blok)}>
+  <h2>
+    {blok.title}
+  </h2>
+  <ul>
+    {
+      articles?.length &&
+        articles.map((article: any) => {
+          article.content.slug = article.slug
+          return (
+            <li>
+              <a href={`/articles/${article.slug}`}>{`${article.content.date} - ${article.content.title}`}</a>
+            </li>
+          )
+        })
+    }
+  </ul>
+</section>
+
+<style>
+  ul {
+    list-style: none;
+    padding: unset
+  }
+</style>
