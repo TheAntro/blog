@@ -1,4 +1,9 @@
 node_modules/
 dist/
+.terraform/
+*.tfstate
+*.tfstate.backup
+terraform/*/changes
+terraform/gh-actions/*.tfvars
 .DS_Store
 *.env
