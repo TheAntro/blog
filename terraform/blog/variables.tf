@@ -13,3 +13,8 @@ variable "location" {
   type        = string
   default     = "westeurope"
 }
+
+variable "domain_name" {
+  description = "Custom domain name for the app"
+  type        = string
+}
