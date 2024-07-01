@@ -1,8 +1,8 @@
 name: Build and publish blog
 on: 
   push:
-    branches:
-      - main
+    tags:
+      - 'publish**'
 
 permissions:
   id-token: write
