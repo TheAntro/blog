@@ -1,9 +1,12 @@
 :root {
-  --bg-color: 15, 15, 15;
-  --bg-color-light: 35, 45, 63;
-  --primary: 0, 91, 65;
-  --secondary: 0, 129, 112;
-  --white: 255, 255, 255;
+  --bg-color: rgb(15, 15, 15);
+  --bg-color-light: rgb(35, 45, 63);
+  --primary: rgb(0, 91, 65);
+  --secondary: rgb(134, 163, 151);
+  --accent: rgb(252, 212, 87);
+  --accent-darker: color-mix(in srgb, var(--accent), #000 25%);
+  --white: rgb(255, 255, 255);
+  --gray: color-mix(in srgb, var(--white), #000 25%);
   --max-width: 44rem;
   --state-transition: 50ms ease-in;
 }
@@ -15,16 +18,17 @@
 }
 
 body {
-  background-color: rgb(var(--bg-color));
-  color: rgb(var(--white));
+  background-color: var(--bg-color);
+  color: var(--white);
   font-family: "Outfit Variable", sans-serif;
   margin: 0;
 }
 
 a {
-  color: rgb(var(--secondary));
+  color: var(--accent);
+  text-underline-offset: 2px;
   &:visited {
-    color: rgb(var(--primary));
+    color: var(--accent-darker);
   }
 }
 
