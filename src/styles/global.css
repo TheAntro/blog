@@ -35,3 +35,7 @@ a {
 p {
   line-height: 150%;
 }
+
+pre {
+  white-space: pre-wrap;
+}
