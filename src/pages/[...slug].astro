@@ -7,12 +7,11 @@ export async function getStaticPaths() {
   const storyblokApi = useStoryblokApi()
  
   const { data } = await storyblokApi.get('cdn/links', {
-    version: 'draft',
+    version: import.meta.env.DEV ? 'draft' : 'published',
   })
-  let links = data.links
-  links = Object.values(links)
- 
-  return links.map((link: any) => {
+  const linksArray = Object.values(data.links as Record<string, { slug: string }>)
+
+  return linksArray.map((link: any) => {
     return {
       params: {
         slug: link.slug === 'home' ? undefined : link.slug,

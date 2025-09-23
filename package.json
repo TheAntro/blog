@@ -24,12 +24,11 @@
   "homepage": "https://github.com/TheAntro/blog#readme",
   "dependencies": {
     "@fontsource-variable/outfit": "^5.0.8",
-    "@storyblok/astro": "^4.0.2",
-    "astro": "^4.2.6",
-    "vite": "^5.0.12"
+    "@storyblok/astro": "^7.3.1",
+    "astro": "^5.13.10"
   },
   "volta": {
-    "node": "20.11.0",
+    "node": "22.0.0",
     "npm": "10.2.5"
   },
   "devDependencies": {
