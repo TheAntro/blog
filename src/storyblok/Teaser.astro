@@ -1,8 +1,9 @@
 ---
-import { storyblokEditable, type SbBlokData, renderRichText, type ISbRichtext } from '@storyblok/astro'
+import { storyblokEditable, type SbBlokData, renderRichText } from '@storyblok/astro'
+import type { StoryblokRichTextNode } from '@storyblok/richtext'
 interface Teaser {
   headline: string;
-  insert: ISbRichtext;
+  insert: StoryblokRichTextNode;
 }
 interface Props {
   blok: SbBlokData & Teaser;

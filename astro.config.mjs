@@ -1,14 +1,12 @@
 import { defineConfig } from "astro/config";
-import storyblok from "@storyblok/astro";
-import { loadEnv } from "vite";
+import { storyblok } from "@storyblok/astro";
 import basicSsl from "@vitejs/plugin-basic-ssl";
-
-const env = loadEnv("", process.cwd(), "STORYBLOK");
+import { loadEnv } from "vite";
 
 export default defineConfig({
   integrations: [
     storyblok({
-      accessToken: env.STORYBLOK_TOKEN,
+      accessToken: (loadEnv(process.env.NODE_ENV || "development", process.cwd(), "STORYBLOK").STORYBLOK_TOKEN) || process.env.STORYBLOK_TOKEN,
       apiOptions: {
         region: "eu",
       },

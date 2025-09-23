@@ -7,3 +7,4 @@ terraform/*/changes
 terraform/gh-actions/*.tfvars
 .DS_Store
 *.env
+.astro/
