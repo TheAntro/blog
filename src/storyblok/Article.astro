@@ -1,13 +1,17 @@
 ---
-import { storyblokEditable, type SbBlokData, renderRichText } from '@storyblok/astro'
+import {
+  storyblokEditable,
+  type SbBlokData,
+  renderRichText
+} from '@storyblok/astro'
 import type { StoryblokRichTextNode } from '@storyblok/richtext'
 interface Article {
-  title: string;
-  date: string;
+  title: string
+  date: string
   teaser: SbBlokData
   content: StoryblokRichTextNode
 }
-const { blok }  = Astro.props as { blok: SbBlokData & Article }
+const { blok } = Astro.props as { blok: SbBlokData & Article }
 ---
 
 <article {...storyblokEditable(blok)}>
@@ -16,7 +20,7 @@ const { blok }  = Astro.props as { blok: SbBlokData & Article }
       {blok.title}
     </h1>
     <span class="publish-time">{blok.date}</span>
-    <div set:html={renderRichText(blok.content)}></div>
+    <div set:html={renderRichText(blok.content)} />
   </div>
 </article>
 <style>

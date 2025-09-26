@@ -1,19 +1,19 @@
 ---
 import PostItem from '@/components/PostItem.astro'
 import { storyblokEditable, useStoryblokApi } from '@storyblok/astro'
- 
+
 const { blok } = Astro.props
- 
+
 const storyblokApi = useStoryblokApi()
 const { data } = await storyblokApi.get(`cdn/stories`, {
-  version: import.meta.env.DEV ? "draft" : "published",
+  version: import.meta.env.DEV ? 'draft' : 'published',
   starts_with: 'articles/',
-  is_startpage: false,
+  is_startpage: false
 })
- 
+
 const articles = data.stories
 ---
- 
+
 <section {...storyblokEditable(blok)}>
   <h2>
     {blok.title}
@@ -24,7 +24,11 @@ const articles = data.stories
         articles.map((article: any) => {
           return (
             <li>
-              <PostItem title={article.content.title} href={`/articles/${article.slug}`} date={article.content.date} />
+              <PostItem
+                title={article.content.title}
+                href={`/articles/${article.slug}`}
+                date={article.content.date}
+              />
             </li>
           )
         })
