@@ -2,39 +2,41 @@
 import { useStoryblokApi } from '@storyblok/astro'
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
- 
+
 export async function getStaticPaths() {
   const storyblokApi = useStoryblokApi()
- 
+
   const { data } = await storyblokApi.get('cdn/links', {
-    version: import.meta.env.DEV ? 'draft' : 'published',
+    version: import.meta.env.DEV ? 'draft' : 'published'
   })
-  const linksArray = Object.values(data.links as Record<string, { slug: string }>)
+  const linksArray = Object.values(
+    data.links as Record<string, { slug: string }>
+  )
 
   return linksArray.map((link: any) => {
     return {
       params: {
-        slug: link.slug === 'home' ? undefined : link.slug,
-      },
+        slug: link.slug === 'home' ? undefined : link.slug
+      }
     }
   })
 }
- 
+
 const { slug } = Astro.params
- 
+
 const storyblokApi = useStoryblokApi()
- 
+
 const { data } = await storyblokApi.get(
   `cdn/stories/${slug === undefined ? 'home' : slug}`,
   {
-    version: import.meta.env.DEV ? "draft" : "published",
+    version: import.meta.env.DEV ? 'draft' : 'published',
     resolve_relations: ['all-articles.articles']
   }
 )
- 
+
 const story = data.story
 ---
- 
+
 <BaseLayout title="Antro.dev Blog">
   <StoryblokComponent blok={story.content} />
 </BaseLayout>

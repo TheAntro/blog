@@ -1,20 +1,24 @@
 ---
-import { storyblokEditable, type SbBlokData, renderRichText } from '@storyblok/astro'
+import {
+  storyblokEditable,
+  type SbBlokData,
+  renderRichText
+} from '@storyblok/astro'
 import type { StoryblokRichTextNode } from '@storyblok/richtext'
 interface Teaser {
-  headline: string;
-  insert: StoryblokRichTextNode;
+  headline: string
+  insert: StoryblokRichTextNode
 }
 interface Props {
-  blok: SbBlokData & Teaser;
+  blok: SbBlokData & Teaser
 }
 const { blok } = Astro.props
-const insert = renderRichText(blok.insert);
+const insert = renderRichText(blok.insert)
 ---
-  
+
 <div {...storyblokEditable(blok)}>
   <h1>
     {blok.headline}
   </h1>
-  <Fragment set:html={insert}>
+  <Fragment set:html={insert} />
 </div>

@@ -1,6 +1,7 @@
 ---
-const { href, date, title } = Astro.props;
+const { href, date, title } = Astro.props
 ---
+
 <a class="post-card" href={href}>
   <div class="card-content">
     <span class="post-date">{date}</span>
@@ -19,26 +20,27 @@ const { href, date, title } = Astro.props;
     transition: box-shadow 0.3s ease-out;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
-  
-  .post-card:hover, .post-card:focus {
-    box-shadow: 
+
+  .post-card:hover,
+  .post-card:focus {
+    box-shadow:
       0 8px 25px rgba(0, 91, 65, 0.4),
       0 4px 12px rgba(0, 91, 65, 0.2),
       6px 6px 15px rgba(252, 212, 87, 0.15);
   }
-  
+
   .card-content {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
   }
-  
+
   .post-date {
     font-size: 0.85rem;
     color: var(--gray);
     letter-spacing: 0.02em;
   }
-  
+
   .post-title {
     margin: 0;
     font-size: 1.25rem;
