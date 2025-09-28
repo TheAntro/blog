@@ -41,7 +41,7 @@ pre {
 }
 
 /* Visible focus styles for keyboard users */
-:where(a, button, [role="button"], input, textarea, select):focus-visible {
+:where(a, button, [role='button'], input, textarea, select):focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
