@@ -27,8 +27,9 @@
     text-decoration: none;
     color: inherit;
     transition: all var(--state-transition);
-    &:hover {
-      border-bottom: 2px solid;
+    &:hover,
+    &:focus-visible {
+      box-shadow: inset 0 -2px currentColor;
     }
   }
 </style>
