@@ -4,6 +4,11 @@ import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
 
 export async function getStaticPaths() {
+  // Skip Storyblok API calls if no token is configured (e.g., PR CI environment)
+  const hasToken = Boolean(import.meta.env.STORYBLOK_TOKEN)
+  if (!hasToken) {
+    return []
+  }
   const storyblokApi = useStoryblokApi()
 
   const { data } = await storyblokApi.get('cdn/links', {
@@ -24,19 +29,21 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params
 
-const storyblokApi = useStoryblokApi()
-
-const { data } = await storyblokApi.get(
-  `cdn/stories/${slug === undefined ? 'home' : slug}`,
-  {
-    version: import.meta.env.DEV ? 'draft' : 'published',
-    resolve_relations: ['all-articles.articles']
-  }
-)
-
-const story = data.story
+// Only fetch story data when token exists; otherwise page won't be built
+let story: any = null
+if (import.meta.env.STORYBLOK_TOKEN) {
+  const storyblokApi = useStoryblokApi()
+  const { data } = await storyblokApi.get(
+    `cdn/stories/${slug === undefined ? 'home' : slug}`,
+    {
+      version: import.meta.env.DEV ? 'draft' : 'published',
+      resolve_relations: ['all-articles.articles']
+    }
+  )
+  story = data.story
+}
 ---
 
 <BaseLayout title="Antro.dev Blog">
-  <StoryblokComponent blok={story.content} />
+  {story && <StoryblokComponent blok={story.content} />}
 </BaseLayout>

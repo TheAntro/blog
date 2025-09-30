@@ -24,9 +24,9 @@ const { href, date, title } = Astro.props
   .post-card:hover,
   .post-card:focus {
     box-shadow:
-      0 8px 25px rgba(0, 91, 65, 0.4),
-      0 4px 12px rgba(0, 91, 65, 0.2),
-      6px 6px 15px rgba(252, 212, 87, 0.15);
+      0 8px 25px color-mix(in srgb, var(--primary), transparent 60%),
+      0 4px 12px color-mix(in srgb, var(--primary), transparent 80%),
+      6px 6px 15px color-mix(in srgb, var(--accent), transparent 85%);
   }
 
   .card-content {
@@ -45,7 +45,7 @@ const { href, date, title } = Astro.props
     margin: 0;
     font-size: 1.25rem;
     font-weight: 600;
-    color: var(--white);
+    color: var(--text);
     line-height: 1.2;
   }
 </style>
